@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const animations = {
 	initial: { opacity: 0, y: 100 },
@@ -7,7 +6,7 @@ const animations = {
 	exit: { opacity: 0, y: -100 },
 };
 
-export default function PageNotFound() {
+export default function AppLayout({ children }) {
 	return (
 		<motion.div
 			variants={animations}
@@ -16,8 +15,7 @@ export default function PageNotFound() {
 			exit="exit"
 			transition={{ duration: 0.75, ease: 'easeInOut' }}
 		>
-			<h1>page not found !</h1>
-			<Link to="/">back to home</Link>
+			{children}
 		</motion.div>
 	);
 }
