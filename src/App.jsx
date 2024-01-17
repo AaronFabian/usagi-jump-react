@@ -1,16 +1,24 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-
 import { AnimatePresence } from 'framer-motion';
+
 import Home from './pages/Home.jsx';
 import EventDetail from './pages/EventDetail.jsx';
 import PageNotFound from './pages/PageNotFound.jsx';
+
+import './styles/html5reset-1.6.1.css';
+import './styles/styles.css';
 
 function App() {
 	const location = useLocation();
 
 	// <Routes />
+	// : index attribute means if the route url written as '/' then use that route
 	// : key attribute for framer motion to detect animation tree
 	// : location attribute allow the user to click back or prev with animation in browser button
+
+	// <Navigate />
+	// : Navigate component is React router dom component
+	// : "to" attribute will redirect user to intended route
 	return (
 		<>
 			<AnimatePresence mode="wait">
