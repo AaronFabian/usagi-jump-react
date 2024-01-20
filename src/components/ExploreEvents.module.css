@@ -1,0 +1,14 @@
+.artist_list {
+	margin: 10px 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	row-gap: 20px;
+}
+
+.simple_pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

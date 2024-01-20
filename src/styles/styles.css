@@ -4,32 +4,59 @@
 	--blue-color: rgba(43, 76, 129, 1);
 }
 
-.app-layout {
+.app_layout {
 	margin: auto;
-	max-width: 1080px;
+	max-width: 1440px;
 	min-width: 720px;
 }
 
 .header {
+	position: relative;
+
+	& .login_wrapper {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 99;
+		margin: 24px;
+
+		& .login {
+			color: var(--text-white);
+			margin: 8px;
+			text-decoration: none;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
 	& .jumbotron {
 		position: relative;
 		height: 720px;
 		background-color: aliceblue;
 
-		& .fes-logo {
+		& .fes_logo {
+			z-index: 2;
 			position: absolute;
 			width: 80px;
 			height: 80px;
-			border: solid 1px black;
+			/* border: solid 1px black; */
+
+			& img {
+				object-fit: cover;
+				width: 80px;
+				height: 80px;
+			}
 		}
 
-		& .img {
+		& .bg_img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 		}
 
-		& .img-filter {
+		& .img_filter {
 			z-index: 0;
 			position: absolute;
 			top: 0;
@@ -39,7 +66,7 @@
 			background-color: rgba(0, 0, 0, 0.3);
 		}
 
-		& .jumbotron-content {
+		& .jumbotron_content {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -68,29 +95,32 @@
 		}
 
 		/* dummy img */
-		& .logo-title {
-			width: 100%;
-			height: 100px;
-			border: 1px solid black;
+		& .logo_title {
+			& img {
+				width: 400px;
+				height: 80px;
+				object-fit: cover;
+			}
 		}
 
-		& .app-launcher {
+		& .app_launcher {
 			position: absolute;
 			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
 
-			& .launcher-logos {
+			& .launcher_logos {
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				column-gap: 12px;
 
-				& .os-logo {
+				& .os_logo {
 					width: 140px;
 				}
 			}
 
-			& .min-os-version {
+			& .min_os_version {
 				padding-top: 18px;
 				padding-bottom: 26px;
 				color: var(--text-white);
@@ -112,14 +142,14 @@
 		padding-bottom: 18px;
 	}
 
-	& .sub-header {
+	& .sub_header {
 		text-align: center;
 		font-size: 21px;
 		letter-spacing: 1px;
 		color: var(--text-white);
 	}
 
-	& .can-do-list {
+	& .can_do_list {
 		position: absolute;
 		top: 50%;
 		left: 0;
@@ -129,17 +159,24 @@
 		flex-wrap: wrap;
 		justify-content: center;
 
-		& .item-wrapper {
+		& .item_wrapper {
 			flex-basis: 33.33%;
 			text-align: center;
+			text-decoration: none;
 
-			& .can-do-item {
+			& .can_do_item {
+				display: block;
 				margin: auto;
 				background-color: var(--blue-color);
 				border-radius: 22%;
 				width: 108px;
 				height: 108px;
-				box-shadow: -8px 8px var(--green-color);
+				box-shadow: 0px 0px var(--green-color);
+				transition-duration: 150ms;
+				&:hover {
+					opacity: 0.9;
+					box-shadow: -8px 8px var(--green-color);
+				}
 
 				& img {
 					width: 100%;
@@ -147,7 +184,7 @@
 				}
 			}
 
-			& .item-info {
+			& .item_info {
 				padding: 32px 0;
 				font-size: 20px;
 				font-weight: 600;
@@ -166,20 +203,20 @@
 		padding-bottom: 18px;
 	}
 
-	& .sub-header {
+	& .sub_header {
 		text-align: center;
 		font-size: 21px;
 		letter-spacing: 1px;
 	}
 
-	& .concert-preview {
+	& .concert_preview {
 		display: block;
 		margin: auto;
 		width: 86%;
 		padding: 42px 0;
 	}
 
-	& .about-paragraph {
+	& .about_paragraph {
 		margin: auto;
 		width: 86%;
 		line-height: 26px;
@@ -200,19 +237,19 @@
 		padding-bottom: 18px;
 	}
 
-	& .sub-header {
+	& .sub_header {
 		text-align: center;
 		font-size: 21px;
 		letter-spacing: 1px;
 		color: var(--text-white);
 	}
 
-	& .pickup-number {
+	& .pickup_number {
 		margin-top: 62px;
 		margin-bottom: 42px;
 		position: relative;
 
-		& .pickup-num {
+		& .pickup_num {
 			display: block;
 			text-align: center;
 			font-size: 120px;
@@ -222,7 +259,7 @@
 			text-align: center;
 		}
 
-		& .pickup-title {
+		& .pickup_title {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -235,17 +272,17 @@
 		}
 	}
 
-	& .sp-preview {
+	& .sp_preview {
 		display: flex;
 		justify-content: center;
 		gap: 60px;
 
-		& .sp-img {
+		& .sp_img {
 			height: 440px;
 		}
 	}
 
-	& .pickup-info {
+	& .pickup_info {
 		text-align: center;
 		margin: auto;
 		color: var(--text-white);
@@ -253,7 +290,53 @@
 		line-height: 30px;
 	}
 
-	& .pickup-item:last-child .pickup-info {
+	& .pickup_item:last-child .pickup_info {
 		color: var(--blue-color);
+	}
+}
+
+footer {
+	background-image: url(be7c132e4c8d5c897d7e3752975cda68.jpg);
+	height: 500px;
+	background-position: center;
+	max-width: 1440px;
+
+	& .footer_text {
+		margin: auto;
+		padding-top: 100px;
+		font: normal normal 800 36px/70px Toppan Bunkyu Midashi Gothic;
+		letter-spacing: 0px;
+		opacity: 1;
+		text-align: center;
+		color: #284683;
+	}
+
+	& .download {
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		margin-top: 70px;
+		margin-bottom: 15px;
+	}
+
+	& img.usagi_icon {
+		width: 80px;
+		height: 80px;
+		text-align: center;
+	}
+
+	& img.usagi_text {
+		width: 400px;
+		height: 80px;
+		object-fit: cover;
+	}
+
+	& .download_icon {
+		margin: auto;
+		text-align: center;
+	}
+	& .download_icon img {
+		width: 120px;
 	}
 }

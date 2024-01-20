@@ -2,11 +2,11 @@ export default function AboutSection() {
 	return (
 		<section className="about">
 			<h2>ABOUT</h2>
-			<p className="sub-header">【FES de ジャンプ】 アプリとは</p>
+			<p className="sub_header">【FES de ジャンプ】 アプリとは</p>
 
-			<img className="concert-preview" src="concert-preview02.jpg" alt="concert-preview02" />
+			<img className="concert_preview" src="concert-preview02.jpg" alt="concert preview02" />
 
-			<p className="about-paragraph">
+			<p className="about_paragraph">
 				全国各地のロックフェス情報をまとめたアプリ。
 				<br />
 				基本情報はもちろんフェス初心者の方に向けてのコラムやもっと詳しくはフェスを知りたい方へを知りたい方へ向けての情報。

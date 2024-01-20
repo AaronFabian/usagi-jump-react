@@ -1,23 +1,25 @@
 import { motion } from 'framer-motion';
-import { Outlet } from 'react-router-dom';
+
+import LoginForm from '../components/LoginForm.jsx';
+
+// import styles from './Login.module.css';
 
 const animations = {
-	initial: { opacity: 0, y: 20 },
+	initial: { opacity: 0, y: 100 },
 	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -20 },
+	exit: { opacity: 0, y: -100 },
 };
 
-export default function AppLayout() {
+export default function Login() {
 	return (
 		<motion.div
-			className="app_layout"
 			variants={animations}
 			initial="initial"
 			animate="animate"
 			exit="exit"
 			transition={{ duration: 0.75, ease: 'easeInOut' }}
 		>
-			<Outlet />
+			<LoginForm />
 		</motion.div>
 	);
 }

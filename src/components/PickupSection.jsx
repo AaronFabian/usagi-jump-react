@@ -51,8 +51,8 @@ const pickupItems = [
 export default function PickupSection() {
 	return (
 		<section className="pickup">
-			<h2>PIC UP</h2>
-			<p className="sub-header">主な機能を紹介</p>
+			<h2>PICK UP</h2>
+			<p className="sub_header">主な機能を紹介</p>
 
 			{pickupItems.map((pickup, i) => (
 				<PickupItem
