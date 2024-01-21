@@ -2,6 +2,7 @@
 	--text-white: #fafafa;
 	--green-color: rgba(206, 245, 75, 1);
 	--blue-color: rgba(43, 76, 129, 1);
+	--error: #ff80ab;
 }
 
 .app_layout {
@@ -27,6 +28,17 @@
 
 			&:hover {
 				opacity: 0.8;
+			}
+		}
+
+		& .favorite_btn {
+			padding: 8px 12px;
+			background-color: var(--green-color);
+			border-radius: 50%;
+
+			& svg {
+				transform: translateY(2px);
+				color: var(--blue-color);
 			}
 		}
 	}
@@ -336,7 +348,9 @@ footer {
 		margin: auto;
 		text-align: center;
 	}
+
 	& .download_icon img {
 		width: 120px;
+		margin: 0 6px;
 	}
 }

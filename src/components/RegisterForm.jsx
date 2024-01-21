@@ -4,14 +4,15 @@ import toast from 'react-hot-toast';
 
 import styles from './LoginForm.module.css';
 import axios from 'axios';
-import { useUser } from '../context/UserProvider.jsx';
+import { useUser } from '../context/userProvider.jsx';
 
-export default function LoginForm() {
+export default function RegisterForm() {
 	const navigate = useNavigate();
 	const { dispatch } = useUser();
 	const [isLoading, setIsLoading] = useState(false);
 	const [success, setSuccess] = useState('');
 	const [error, setError] = useState('');
+	const usernameRef = useRef();
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
@@ -19,48 +20,43 @@ export default function LoginForm() {
 		e.preventDefault();
 
 		// get user inp
+		const inpUsername = usernameRef.current.value;
 		const inpEmail = emailRef.current.value;
 		const inpPassword = passwordRef.current.value;
 
-		const user = {
+		// create userEntity;
+		const newUser = {
+			username: inpUsername,
 			email: inpEmail,
 			password: inpPassword,
+			phone: '0123456789',
 		};
 
+		// register to our server
+		setIsLoading(true);
+
 		try {
-			// register to our server
-			setIsLoading(true);
+			const response = await axios({
+				method: 'POST',
+				url: 'http://127.0.0.1:3000/users/register',
+				data: newUser,
+				withCredentials: true,
+			});
 
-			const axiosResponseConfig = {};
-			axiosResponseConfig.method = 'POST';
-			axiosResponseConfig.url = 'http://127.0.0.1:3000/users/login';
-			axiosResponseConfig.data = user;
-			axiosResponseConfig.withCredentials = true;
-
-			const response = await axios(axiosResponseConfig);
-
-			// set new jwt token from logged token
+			// set the jwt
 			localStorage.setItem('jwt', response.data.token);
 
-			// updating the provider
-			dispatch({ type: 'SET_USERNAME', payload: response.data.data.user.username });
+			// set provider to login
 			dispatch({ type: 'SET_LOGIN', payload: true });
 
 			// if everything is ok then redirect to home page
 			setError(null);
-			setSuccess('Login success');
-
-			// toast from library
-			toast.success('Login success');
-
-			// redirect to home and never see this page again if the user is logged in
+			setSuccess('Register success');
+			toast.success('Register success');
 			setTimeout(() => navigate('/home'), 2000);
 		} catch (error) {
-			// set error message but not for success message
 			setError(error.response.data.message);
 			setSuccess(null);
-
-			// error toast for make our website more appealing
 			toast.error(error.response.data.message);
 		} finally {
 			setIsLoading(false);
@@ -76,14 +72,15 @@ export default function LoginForm() {
 							{error && <p className={styles.error_message}>{error}</p>}
 							{success && <p className={styles.success_message}>{success}</p>}
 
+							<input type="text" placeholder="username" ref={usernameRef} />
 							<input type="text" placeholder="email address" ref={emailRef} />
 							<input type="password" placeholder="password" ref={passwordRef} />
 							<button onClick={handleRegister} disabled={isLoading}>
-								login
+								register
 							</button>
 
 							<p className={styles.message}>
-								Not registered? <a href="/register">Create an account</a>
+								Already registered? <a href="/login">Login now</a>
 							</p>
 						</form>
 					</div>

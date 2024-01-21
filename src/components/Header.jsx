@@ -1,20 +1,37 @@
 import { Link } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
+
+import { useUser } from '../context/UserProvider.jsx';
 
 export default function Header() {
+	const { login: isLoggedIn } = useUser();
+
 	return (
 		<header className="header">
 			<div className="login_wrapper">
-				<Link className="login" to="/login">
-					Login
-				</Link>
-				<Link className="login" to="/register">
-					Register
-				</Link>
+				{isLoggedIn && (
+					<Link className="favorite_btn" to="/favorite">
+						<FaStar />
+					</Link>
+				)}
+
+				{!isLoggedIn && (
+					<>
+						<Link className="login" to="/login">
+							Login
+						</Link>
+						<Link className="login" to="/register">
+							Register
+						</Link>
+					</>
+				)}
 			</div>
 
 			<div className="jumbotron">
 				<div className="fes_logo">
-					<img src="usagi_footer.png" alt="fes de jump logo" />
+					<Link to="/home">
+						<img src="usagi_footer.png" alt="fes de jump logo" />
+					</Link>
 				</div>
 
 				<img className="bg_img" src="yfU.jpg" alt="jumbotron image" />

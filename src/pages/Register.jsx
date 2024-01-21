@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 
-import LoginForm from '../components/LoginForm.jsx';
+import RegisterForm from '../components/RegisterForm.jsx';
 import { useEffect } from 'react';
 import { useUser } from '../context/userProvider.jsx';
 import { useNavigate } from 'react-router-dom';
+
+// import styles from './Login.module.css';
 
 // const animations = {
 // 	initial: { opacity: 0, y: 100 },
@@ -11,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 // 	exit: { opacity: 0, y: -100 },
 // };
 
-export default function Login() {
+export default function Register() {
 	const navigate = useNavigate();
 	const { login: isLogin } = useUser();
 
@@ -21,7 +23,7 @@ export default function Login() {
 
 	return (
 		<>
-			<LoginForm />;
+			<RegisterForm />
 		</>
 	);
 }

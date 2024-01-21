@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import EventCard from '../components/EventCard.jsx';
 
 const animations = {
 	initial: { opacity: 0, y: 100 },
@@ -39,7 +40,17 @@ export default function EventDetail() {
 		return <div>Loading...</div>;
 	}
 
-	console.log(data);
+	const event = data.event;
+	const eventCardProps = {
+		image: event.image,
+		eventName: event.name,
+		venueName: event.location.name,
+		city: event.location.address.addressLocality,
+		location: event.location.address.streetAddress,
+		timezone: event.location.address['x-timezone'],
+		startDate: event.startDate,
+		identifier: event.identifier,
+	};
 
 	return (
 		<>
@@ -47,22 +58,7 @@ export default function EventDetail() {
 				Event Detail
 			</motion.h1>
 
-			{/* <motion.button onClick={() => setIsLoading(!isLoading)}>{!isLoading ? 'Open' : 'Close'}</motion.button> */}
-
-			<AnimatePresence mode="wait">
-				{isLoading && (
-					<Link to="/home">
-						<motion.div
-							animate={{ opacity: 1, x: 0 }}
-							initial={{ opacity: 0, x: -100 }}
-							exit={{ opacity: 0, x: -100 }}
-							transition={{ ease: 'easeInOut', duration: 0.25 }}
-						>
-							back to home
-						</motion.div>
-					</Link>
-				)}
-			</AnimatePresence>
+			<EventCard {...eventCardProps} />
 		</>
 	);
 }
