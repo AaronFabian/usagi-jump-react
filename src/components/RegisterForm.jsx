@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 import styles from './LoginForm.module.css';
 import axios from 'axios';
-import { useUser } from '../context/userProvider.jsx';
+import { useUser } from '../context/UserProvider.jsx';
 
 export default function RegisterForm() {
 	const navigate = useNavigate();

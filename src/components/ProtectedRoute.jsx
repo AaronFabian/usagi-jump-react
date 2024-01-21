@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/userProvider.jsx';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useUser } from '../context/UserProvider.jsx';
+import { useEffect } from 'react';
 
 export default function ProtectedRoute({ children }) {
 	const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { FaMapSigns, FaStar } from 'react-icons/fa';
 import { MdDateRange } from 'react-icons/md';
 
 import styles from './EventCard.module.css';
-import { useUser } from '../context/userProvider.jsx';
+import { useUser } from '../context/UserProvider.jsx';
 
 export default function EventCard({ image, eventName, location, startDate, timezone, venueName, city, identifier }) {
 	const { favoriteIDs, dispatch } = useUser();

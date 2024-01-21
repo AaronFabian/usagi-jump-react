@@ -1,9 +1,9 @@
+import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 
 import styles from './LoginForm.module.css';
-import axios from 'axios';
 import { useUser } from '../context/UserProvider.jsx';
 
 export default function LoginForm() {

@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 
-import { UserProvider } from './context/userProvider.jsx';
+import { UserProvider } from './context/UserProvider.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import AppLayout from './ui/AppLayout.jsx';
 import Home from './pages/Home.jsx';

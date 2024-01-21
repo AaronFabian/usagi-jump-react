@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import RegisterForm from '../components/RegisterForm.jsx';
 import { useEffect } from 'react';
-import { useUser } from '../context/userProvider.jsx';
+import { useUser } from '../context/UserProvider.jsx';
 import { useNavigate } from 'react-router-dom';
 
 // import styles from './Login.module.css';

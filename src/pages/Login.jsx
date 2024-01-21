@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import LoginForm from '../components/LoginForm.jsx';
 import { useEffect } from 'react';
-import { useUser } from '../context/userProvider.jsx';
+import { useUser } from '../context/UserProvider.jsx';
 import { useNavigate } from 'react-router-dom';
 
 // const animations = {

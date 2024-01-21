@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import GenericButton from './GenericButton.jsx';
 import Card from './Card.jsx';
+import { JBApiBaseURL, JBApiKey } from '../api/JBApi.jsx';
 
 import styles from './ExploreEvents.module.css';
-import { useSearchParams } from 'react-router-dom';
-import { JBApiBaseURL, JBApiKey } from '../api/JBApi.jsx';
 
 export default function ExploreEvents() {
 	const [params, setParams] = useSearchParams();
