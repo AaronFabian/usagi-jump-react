@@ -15,8 +15,6 @@ export default function EventDetail() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState(null);
 
-	console.log(params);
-
 	useEffect(() => {
 		setIsLoading(true);
 

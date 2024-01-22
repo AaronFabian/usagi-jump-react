@@ -57,8 +57,6 @@ export default function ExploreEvents() {
 		return <div>Loading...</div>;
 	}
 
-	console.log(data);
-
 	return (
 		<div>
 			<div className={styles.artist_list}>
