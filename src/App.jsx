@@ -46,7 +46,7 @@ function App() {
 						<Route path="home" element={<Home />} />
 						<Route path="explore" element={<ExploreContent />} />
 						<Route path="events/:id" element={<EventDetail />} />
-						<Route path="performer/:id" element={<PerformerDetail />} />
+						<Route path="performers/:id" element={<PerformerDetail />} />
 
 						<Route path="register" element={<Register />} />
 						<Route path="login" element={<Login />} />

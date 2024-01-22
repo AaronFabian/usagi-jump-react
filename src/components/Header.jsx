@@ -1,18 +1,60 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 
 import { useUser } from '../context/UserProvider.jsx';
+import { DE_FES_BASE_URL } from '../api/deFesApi.jsx';
+import toast from 'react-hot-toast';
 
 export default function Header() {
+	const navigate = useNavigate();
 	const { login: isLoggedIn } = useUser();
+	const [isLoggingOut, setLoggingOut] = useState(false);
+
+	async function handleLogout(e) {
+		e.preventDefault();
+
+		try {
+			setLoggingOut(true);
+
+			const token = localStorage.getItem('jwt');
+
+			await axios({
+				url: `${DE_FES_BASE_URL}/users/logout`,
+				method: 'GET',
+				headers: { Authorization: `Bearer ${token}` },
+			});
+
+			// since we don't have cookies then set delete jwt manually at localStorage
+			localStorage.removeItem('jwt');
+
+			// give nice toast ui
+			toast.success('Logged out');
+
+			// refresh the page
+			setTimeout(() => navigate(0), 1500);
+		} catch (error) {
+			console.log(error);
+			toast.error('something gone wrong while logging out');
+			setLoggingOut(false);
+		}
+	}
 
 	return (
 		<header className="header">
 			<div className="login_wrapper">
 				{isLoggedIn && (
-					<Link className="favorite_btn" to="/favorite">
-						<FaStar />
-					</Link>
+					<>
+						<Link className="favorite_btn" to="/favorite" title="favorite event list">
+							<FaStar />
+						</Link>
+
+						<button className="logout_btn" title="logout" onClick={handleLogout} disabled={isLoggingOut}>
+							<RiLogoutBoxRLine />
+						</button>
+					</>
 				)}
 
 				{!isLoggedIn && (

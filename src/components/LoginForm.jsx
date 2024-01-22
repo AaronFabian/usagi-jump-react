@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './LoginForm.module.css';
 import { useUser } from '../context/UserProvider.jsx';
+import { DE_FES_BASE_URL } from '../api/deFesApi.jsx';
 
 export default function LoginForm() {
 	const navigate = useNavigate();
@@ -31,20 +32,28 @@ export default function LoginForm() {
 			// register to our server
 			setIsLoading(true);
 
-			const axiosResponseConfig = {};
-			axiosResponseConfig.method = 'POST';
-			axiosResponseConfig.url = 'http://127.0.0.1:3000/users/login';
-			axiosResponseConfig.data = user;
-			axiosResponseConfig.withCredentials = true;
+			const axiosLoginRequestConfig = {};
+			axiosLoginRequestConfig.method = 'POST';
+			axiosLoginRequestConfig.url = `${DE_FES_BASE_URL}/users/login`;
+			axiosLoginRequestConfig.data = user;
 
-			const response = await axios(axiosResponseConfig);
+			const response = await axios(axiosLoginRequestConfig);
 
 			// set new jwt token from logged token
 			localStorage.setItem('jwt', response.data.token);
 
+			// accessing user favorite events
+			const axiosFavoriteRequestConfig = {};
+			axiosFavoriteRequestConfig.method = 'GET';
+			axiosFavoriteRequestConfig.url = `${DE_FES_BASE_URL}/favorite`;
+			axiosFavoriteRequestConfig.headers = { Authorization: `Bearer ${response.data.token}` };
+
+			const getFavoritesResponse = await axios(axiosFavoriteRequestConfig);
+
 			// updating the provider
-			dispatch({ type: 'SET_USERNAME', payload: response.data.data.user.username });
 			dispatch({ type: 'SET_LOGIN', payload: true });
+			dispatch({ type: 'SET_USERNAME', payload: response.data.data.user.username });
+			dispatch({ type: 'DECLARE_FAVORITES', payload: getFavoritesResponse.data.data });
 
 			// if everything is ok then redirect to home page
 			setError(null);
@@ -79,7 +88,7 @@ export default function LoginForm() {
 							<input type="text" placeholder="email address" ref={emailRef} />
 							<input type="password" placeholder="password" ref={passwordRef} />
 							<button onClick={handleRegister} disabled={isLoading}>
-								login
+								{isLoading ? 'loading...' : 'login'}
 							</button>
 
 							<p className={styles.message}>

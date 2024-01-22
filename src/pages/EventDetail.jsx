@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import EventCard from '../components/EventCard.jsx';
 
@@ -10,6 +10,7 @@ const animations = {
 };
 
 export default function EventDetail() {
+	const navigate = useNavigate();
 	const params = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState(null);
@@ -55,7 +56,7 @@ export default function EventDetail() {
 	return (
 		<>
 			<motion.h1 {...animations} transition={{ duration: 0.75, delay: 0.25, ease: 'easeInOut' }}>
-				Event Detail
+				<button onClick={() => navigate(-1)}>戻る</button>
 			</motion.h1>
 
 			<EventCard {...eventCardProps} />

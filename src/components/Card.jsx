@@ -12,7 +12,7 @@ export default function Card({ name, image, performer, eventIdentifier, performe
 				<img src={image} alt={name} />
 			</Link>
 			<div className={styles.container}>
-				<Link to={`/performer/${performerId[1]}`}>
+				<Link to={`/performers/${performerId[1]}`}>
 					<h4>
 						<b>{performer}</b>
 					</h4>

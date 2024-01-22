@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import styles from './LoginForm.module.css';
 import axios from 'axios';
 import { useUser } from '../context/UserProvider.jsx';
+import { DE_FES_BASE_URL } from '../api/deFesApi.jsx';
 
 export default function RegisterForm() {
 	const navigate = useNavigate();
@@ -38,9 +39,8 @@ export default function RegisterForm() {
 		try {
 			const response = await axios({
 				method: 'POST',
-				url: 'http://127.0.0.1:3000/users/register',
+				url: `${DE_FES_BASE_URL}/users/register`,
 				data: newUser,
-				withCredentials: true,
 			});
 
 			// set the jwt

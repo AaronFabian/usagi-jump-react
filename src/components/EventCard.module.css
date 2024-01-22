@@ -1,5 +1,13 @@
-.card {
+.centering_detail {
+	min-height: 100dvh;
 	position: relative;
+}
+
+.card {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	margin: auto;
 	display: flex;
 	flex-direction: column;

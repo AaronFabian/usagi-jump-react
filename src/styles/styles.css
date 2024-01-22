@@ -40,6 +40,30 @@
 				transform: translateY(2px);
 				color: var(--blue-color);
 			}
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+		& .logout_btn {
+			cursor: pointer;
+			border: none;
+			width: 40px;
+			height: 40px;
+			margin-left: 6px;
+			padding: 8px 12px;
+			background-color: var(--green-color);
+			border-radius: 50%;
+
+			& svg {
+				transform: translateY(2px);
+				color: var(--blue-color);
+			}
+
+			&:hover {
+				opacity: 0.8;
+			}
 		}
 	}
 
