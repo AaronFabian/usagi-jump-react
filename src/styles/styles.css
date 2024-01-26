@@ -1,8 +1,17 @@
+@font-face {
+	font-family: 'hiragikakugothic';
+	src: url('fonts/hiragikakugothic.ttc');
+}
+
 :root {
 	--text-white: #fafafa;
 	--green-color: rgba(206, 245, 75, 1);
 	--blue-color: rgba(43, 76, 129, 1);
 	--error: #ff80ab;
+}
+
+html {
+	font-family: 'hiragikakugothic';
 }
 
 .app_layout {
