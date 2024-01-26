@@ -72,7 +72,7 @@ export default function Header() {
 			<div className="jumbotron">
 				<div className="fes_logo">
 					<Link to="/home">
-						<img src="usagi_footer.png" alt="fes de jump logo" />
+						<img src="mainlogo.png" alt="fes de jump logo" />
 					</Link>
 				</div>
 
@@ -82,7 +82,8 @@ export default function Header() {
 				<div className="jumbotron_content">
 					<h1>フェスの情報を集めるならこのアプリから ！</h1>
 					<div className="logo_title">
-						<img src="fesdejump.png" alt="fes de jump full" />
+						<img src="usagi_footer.png" alt="fes de small logo" className="logo_sub2" />
+						<img src="fesdejump.png" alt="fes de jump full" className="logo_full" />
 					</div>
 					<p>大規模フェスからサーキットフェスまで</p>
 					<p>全国のロックフェスに関する情報が丸わかり !</p>

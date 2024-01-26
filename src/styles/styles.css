@@ -132,7 +132,12 @@
 
 		/* dummy img */
 		& .logo_title {
-			& img {
+			& .logo_sub2 {
+				width: 80px;
+				height: 80px;
+			}
+
+			& .logo_full {
 				width: 400px;
 				height: 80px;
 				object-fit: cover;
